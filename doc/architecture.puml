@@ -1,0 +1,57 @@
+@startuml
+skinparam componentStyle rectangle
+
+package "cli" {
+  [Cli] as CLI
+}
+package "app" {
+  [EditorSession] as Session
+  [CommandTokenizer] as Tok
+}
+package "command" {
+  [CommandRegistrar] as Reg
+  [编辑命令] as Cmd
+  [CommandHistory] as Hist
+}
+package "document" {
+  [SvgDocument] as Doc
+}
+package "shape" {
+  [Shape / GroupShape] as Shape
+}
+package "factory" {
+  [ShapeFactory] as Factory
+}
+package "io" {
+  [SvgReader / SvgWriter] as IO
+  [XmlParser] as Xml
+}
+package "view" {
+  [TreeFormatter] as View
+}
+package "util / error" {
+  [NumberFormat / XmlCodec / EditorError] as Util
+}
+
+CLI --> Session
+Session --> Reg
+Session --> Tok
+Session --> Hist
+Session --> Doc
+Session --> Factory
+Session --> IO
+Cmd --> Doc
+Cmd --> Shape
+Cmd --> Factory
+Cmd --> View
+Doc --> Shape
+Factory --> Shape
+IO --> Factory
+IO --> Shape
+IO --> Xml
+View --> Shape
+Shape --> Util
+Doc --> Util
+IO --> Util
+Cmd --> Util
+@enduml
