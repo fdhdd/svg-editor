@@ -1,0 +1,16 @@
+{
+  "name": "svg-editor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lab1 Phase 1 SVG editor CLI",
+  "scripts": {
+    "cli": "tsx src/cli/Cli.ts",
+    "build": "tsc --noEmit",
+    "test": "tsx --test test/editor.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
